@@ -22,7 +22,10 @@ public class Seat {
     private Flight flight;
 
     @Column(nullable = false)
-    private String seatNumber;
+    private int seatNumber;
+
+    @Column(nullable = false)
+    private String seatLetter;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

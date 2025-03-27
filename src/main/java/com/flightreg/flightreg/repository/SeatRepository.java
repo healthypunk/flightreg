@@ -1,9 +1,14 @@
 package com.flightreg.flightreg.repository;
 
 import com.flightreg.flightreg.model.Seat;
+import com.flightreg.flightreg.model.SeatType;
 import org.springframework.data.repository.CrudRepository;
 
-public interface SeatRepository extends CrudRepository<Seat, Integer> {
+import java.util.List;
 
+public interface SeatRepository extends CrudRepository<Seat, Integer> {
+    public List<Seat> getSeatBySeatType(SeatType seatType);
+
+    public List<Seat> getSeatsBySeatLetterAndSeatNumber(String seatLetter, int seatNumber);
 
 }
