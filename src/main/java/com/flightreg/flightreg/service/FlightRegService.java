@@ -15,7 +15,22 @@ public class FlightRegService {
 
     public List<Flight> getAllFlights(){
         List<Flight> flightList = new ArrayList<>();
-        this.flightRepository.findAll().forEach(flightList::add);
+        flightRepository.findAll().forEach(flightList::add);
         return flightList;
     }
+
+    public void saveFlight(Flight flight){
+        var builder = Flight.builder()
+                .destination(flight.getDestination())
+                        .departurePoint(flight.getDeparturePoint())
+                                .airLine(flight.getAirLine())
+                                        .departure(flight.getDeparture())
+                                                .arrival(flight.getArrival())
+                                                        .departureTime(flight.getDepartureTime())
+                                                                .arrivalTime(flight.getArrivalTime())
+                                                                        .price(flight.getPrice())
+                                                                                .availableSeats(flight.getAvailableSeats());
+        flightRepository.save(builder.build());
+    }
+
 }
