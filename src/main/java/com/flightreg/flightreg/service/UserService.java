@@ -1,9 +1,13 @@
 package com.flightreg.flightreg.service;
 
+import com.flightreg.flightreg.model.Flight;
 import com.flightreg.flightreg.model.User;
 import com.flightreg.flightreg.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -15,13 +19,16 @@ public class UserService {
 //        if (userRepository.findByUsername(username) != null) {
 //            throw new RuntimeException("Username already exists");
 //        }
-        System.out.print(userRepository.findByUsername(username));
         var builder = User.builder()
                 .username(username)
                 .email(email)
                 .password(password);
 
         return userRepository.save(builder.build());
+    }
+
+    public List<User> getUser(String userName){
+        return userRepository.findByUsername(userName);
     }
 
     public void deleteUser(int id){

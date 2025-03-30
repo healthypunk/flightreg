@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/api")
 public class FlightRegController {
     @Autowired
@@ -44,8 +45,19 @@ public class FlightRegController {
             @RequestParam String username,
             @RequestParam String email,
             @RequestParam String password) {
+        System.out.println("grab");
         User newUser = userService.createUser(username, email, password);
         return ResponseEntity.ok(newUser);
+    }
+
+    @GetMapping("/users")
+    public List<User> getUsers(@RequestParam String username){
+        return userService.getUser(username);
+    }
+
+    @GetMapping("/seats")
+    public List<Seat> getUsers(@RequestParam int flightId){
+        return seatSuggestionService.getSeatsByFlightId(flightId);
     }
 
     @GetMapping("/seats/suggestions")

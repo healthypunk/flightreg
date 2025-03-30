@@ -21,6 +21,10 @@ public class SeatSuggestionService {
         return seatList;
     }
 
+    public List<Seat> getSeatsByFlightId(int flightId) {
+        return seatRepository.getSeatByFlightIdAndIsOccupiedFalse(flightId);
+    }
+
     private boolean isAdjacent(List<Seat> seats) {
         for (int i = 0; i < seats.size() - 1; i++) {
             Seat curSeat = seats.get(i);
