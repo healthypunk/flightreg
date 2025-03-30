@@ -11,6 +11,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public User createUser(String username, String email, String password) {
+        //TODO: fix if clause always being called
 //        if (userRepository.findByUsername(username) != null) {
 //            throw new RuntimeException("Username already exists");
 //        }
